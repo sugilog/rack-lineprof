@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'rack', '~> 1.5'
   s.add_dependency 'rblineprof', '~> 0.3.6'
   s.add_dependency 'term-ansicolor', '~> 1.3'
+  s.add_dependency 'json', '~> 1.8.3'
 end
