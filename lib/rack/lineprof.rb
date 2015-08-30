@@ -22,7 +22,6 @@ module Rack
     def call env
       request = Rack::Request.new env
       matcher = request.params['lineprof'] || options[:profile]
-      logger  = options[:logger] || ::Logger.new(STDOUT)
 
       return @app.call env unless matcher
 
@@ -34,6 +33,7 @@ module Rack
     end
 
     def output profile
+      logger  = options[:logger] || ::Logger.new(STDOUT)
       logger.debug Term::ANSIColor.blue("\n[Rack::Lineprof] #{'=' * 63}") + "\n\n" +
            format_profile(profile) + "\n"
     end

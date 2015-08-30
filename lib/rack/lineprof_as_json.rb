@@ -3,6 +3,8 @@ require "json"
 module Rack
   class LineprofAsJSON < Lineprof
     def output profile
+      logger  = options[:logger] || ::Logger.new(STDOUT)
+
       profile.each do |_profile|
         logger.debug _profile.to_json
       end
