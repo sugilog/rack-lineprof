@@ -1,7 +1,7 @@
 require "json"
 
 module Rack
-  class LineprofAsJSON
+  class LineprofAsJSON < Lineprof
     def output profile
       profile.each do |_profile|
         logger.debug _profile.to_json
