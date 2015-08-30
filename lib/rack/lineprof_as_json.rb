@@ -4,9 +4,10 @@ module Rack
   class LineprofAsJSON < Lineprof
     def output profile
       logger  = options[:logger] || ::Logger.new(STDOUT)
+      logger.formatter = formatter
 
       format_profile(profile).each do |_profile|
-        logger.debug Lineprof::PREFIX + " " + _profile.to_json
+        logger.debug _profile.to_json
       end
     end
 
@@ -33,6 +34,12 @@ module Rack
       end
 
       formatted
+    end
+
+    def formatter
+      proc do |severity, datetime, progname, msg|
+        "#{msg}\n"
+      end
     end
   end
 end
