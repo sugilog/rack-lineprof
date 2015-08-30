@@ -24,7 +24,7 @@ module Rack
         source.samples.each do |sample|
           formatted << {
             timestamp: timestamp,
-            file:  source.filename.sub(Dir.pwd + "/", ""),
+            file:  source.file_name.sub(Dir.pwd + "/", ""),
             ms:    sample.ms,
             calls: sample.calls,
             line:  sample.line,
