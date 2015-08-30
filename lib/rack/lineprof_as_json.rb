@@ -31,6 +31,8 @@ module Rack
           }
         end
       end
+
+      formatted
     end
   end
 end
