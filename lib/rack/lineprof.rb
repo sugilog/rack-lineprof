@@ -29,12 +29,12 @@ module Rack
 
       response = nil
       profile = lineprof(%r{#{matcher}}) { response = @app.call env }
-      output profile
+      output profile, request, response
 
       response
     end
 
-    def output profile
+    def output profile, request, response
       logger  = options[:logger] || ::Logger.new(STDOUT)
       logger.debug Term::ANSIColor.blue("\n#{PREFIX} #{'=' * 63}") + "\n\n" +
            format_profile(profile) + "\n"

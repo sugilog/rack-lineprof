@@ -2,11 +2,12 @@ require "json"
 
 module Rack
   class LineprofAsJSON < Lineprof
-    def output profile
+    def output profile, request, response
       logger  = options[:logger] || ::Logger.new(STDOUT)
       logger.formatter = formatter
 
       format_profile(profile).each do |_profile|
+        _profile = _profile.merge url: request.fullpath
         logger.debug _profile.to_json
       end
     end
