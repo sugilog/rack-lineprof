@@ -5,7 +5,9 @@ module Rack
     def output profile
       logger  = options[:logger] || ::Logger.new(STDOUT)
 
+      STDOUT.puts profile
       format_profile(profile).each do |_profile|
+        STDOUT.puts _profile
         logger.debug Lineprof::PREFIX + " " + _profile.to_json
       end
     end
