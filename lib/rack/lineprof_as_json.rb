@@ -27,7 +27,7 @@ module Rack
             ms:    sample.ms,
             calls: sample.calls,
             line:  sample.line,
-            code:  sample.code,
+            code:  sample.code.chomp,
             level: sample.level
           }
         end
