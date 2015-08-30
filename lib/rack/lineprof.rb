@@ -13,6 +13,8 @@ module Rack
     WARNING  = 2
     CRITICAL = 3
 
+    PREFIX = "[Rack::Lineprof]"
+
     attr_reader :app, :options
 
     def initialize app, options = {}
@@ -34,7 +36,7 @@ module Rack
 
     def output profile
       logger  = options[:logger] || ::Logger.new(STDOUT)
-      logger.debug Term::ANSIColor.blue("\n[Rack::Lineprof] #{'=' * 63}") + "\n\n" +
+      logger.debug Term::ANSIColor.blue("\n#{PREFIX} #{'=' * 63}") + "\n\n" +
            format_profile(profile) + "\n"
     end
 

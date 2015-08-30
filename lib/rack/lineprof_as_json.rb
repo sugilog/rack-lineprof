@@ -6,7 +6,7 @@ module Rack
       logger  = options[:logger] || ::Logger.new(STDOUT)
 
       profile.each do |_profile|
-        logger.debug _profile.to_json
+        logger.debug Lineprof::PREFIX + " " + _profile.to_json
       end
     end
 
